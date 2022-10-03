@@ -20,8 +20,10 @@ let getPlayerChoice = () => {
 }
 
 let playOneRound = (playerchoice, computerchoice) => {
-
-    if (playerchoice.localeCompare(items[0], 'en', { sensitivity: 'base' }) === 0) {
+    if (playerchoice === null || playerchoice === undefined){
+        result = "Player input was fucking wrong or something else happend!"
+        return result;
+    }else if (playerchoice.localeCompare(items[0], 'en', { sensitivity: 'base' }) === 0) {
         switch (computerchoice) {
             case items[0]:
                 result = "Draw! Rock = Rock"
