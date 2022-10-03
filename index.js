@@ -90,20 +90,20 @@ function game() {
             console.log(`Round: ${round = i}`);
             console.log(result);
             console.warn(`Player wins the game with: ${playerScore} : ${computerScore}`)
-            restartGame();
-            i = 0;
+            endGame();
+            i = 5;
         } else if (playerScore < computerScore && i >= 5) {
             console.log(`Round: ${round = i}`);
             console.log(result);
             console.warn(`Computer wins the game with: ${computerScore} : ${playerScore}`)
-            restartGame();
-            i = 0;
+            endGame();
+            i = 5;
         } else if (playerScore === computerScore && i >= 5) {
             console.log(`Round: ${round = i}`);
             console.log(result);
             console.warn(`It's a draw, final score: ${computerScore} : ${playerScore}`)
-            restartGame();
-            i = 0;
+            endGame();
+            i = 5;
         } else if (playerScore < 5 && computerScore < 5 && i < 5) {
             if (result === "Player input was fucking wrong or something else happend!" || result === "Something went wrong!") {
                 console.log(`Round: ${round = i}`);
@@ -123,6 +123,12 @@ function game() {
 
 function restartGame() {
     console.warn(`Restart The game`);
+    playerScore = 0;
+    computerScore = 0;
+}
+
+function endGame(){
+    console.warn('Run game(); in console to start a new game')
     playerScore = 0;
     computerScore = 0;
 }
