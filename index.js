@@ -1,4 +1,4 @@
-let items = ["Rock", "Paper", "Scissors"];
+const items = ["Rock", "Paper", "Scissors"];
 let computerChoice;
 let playerChoice;
 let result;
@@ -19,11 +19,24 @@ let getPlayerChoice = () => {
     return playerChoice;
 }
 
+let restartGame = () => {
+    console.warn(`Restart The game`);
+    playerScore = 0;
+    computerScore = 0;
+}
+
+let endGame = () => {
+    console.warn('Run game(); in console to start a new game')
+    playerScore = 0;
+    computerScore = 0;
+}
+
+
 let playOneRound = (playerchoice, computerchoice) => {
-    if (playerchoice === null || playerchoice === undefined){
+    if (playerchoice === null || playerchoice === undefined) {
         result = "Player input was fucking wrong or something else happend!"
         return result;
-    }else if (playerchoice.localeCompare(items[0], 'en', { sensitivity: 'base' }) === 0) {
+    } else if (playerchoice.localeCompare(items[0], 'en', { sensitivity: 'base' }) === 0) {
         switch (computerchoice) {
             case items[0]:
                 result = "Draw! Rock = Rock"
@@ -82,7 +95,7 @@ let playOneRound = (playerchoice, computerchoice) => {
     }
 }
 
-function game() {
+let game = () => {
     for (let i = 1; i <= 5; i++) {
         playOneRound(getPlayerChoice(), getComputerChoice());
 
@@ -119,16 +132,4 @@ function game() {
             console.warn("Something is fucked up")
         }
     }
-}
-
-function restartGame() {
-    console.warn(`Restart The game`);
-    playerScore = 0;
-    computerScore = 0;
-}
-
-function endGame(){
-    console.warn('Run game(); in console to start a new game')
-    playerScore = 0;
-    computerScore = 0;
 }
