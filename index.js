@@ -1,3 +1,10 @@
+//DOM
+const gameTitle = document.querySelector('h1')
+const rightContainer = document.querySelector('.rightContainer')
+
+gameTitle.textContent = "Play: Rock, Paper, Scissors"
+
+//GAME
 const items = ["Rock", "Paper", "Scissors"];
 let computerChoice;
 let playerChoice;
@@ -103,30 +110,48 @@ let game = () => {
             console.log(`Round: ${round = i}`);
             console.log(result);
             console.warn(`Player wins the game with: ${playerScore} : ${computerScore}`)
+            let h2 = document.createElement('h2');
+            rightContainer.appendChild(h2)
+            h2.textContent = `Player wins the game with: ${playerScore} : ${computerScore}`
             endGame();
             i = 5;
         } else if (playerScore < computerScore && i >= 5) {
             console.log(`Round: ${round = i}`);
             console.log(result);
             console.warn(`Computer wins the game with: ${computerScore} : ${playerScore}`)
+            let h2 = document.createElement('h2');
+            rightContainer.appendChild(h2)
+            h2.textContent = `Computer wins the game with: ${computerScore} : ${playerScore}`
             endGame();
             i = 5;
         } else if (playerScore === computerScore && i >= 5) {
             console.log(`Round: ${round = i}`);
             console.log(result);
             console.warn(`It's a draw, final score: ${computerScore} : ${playerScore}`)
+            let h2 = document.createElement('h2');
+            rightContainer.appendChild(h2)
+            h2.textContent = `It's a draw, final score: ${computerScore} : ${playerScore}`
             endGame();
             i = 5;
         } else if (playerScore < 5 && computerScore < 5 && i < 5) {
             if (result === "Player input was fucking wrong or something else happend!" || result === "Something went wrong!") {
                 console.log(`Round: ${round = i}`);
                 console.warn(result);
+                let para = document.createElement('p')
+                rightContainer.appendChild(para)
+                para.textContent = result
                 restartGame();
                 i = 0;
             } else {
                 console.log(`Round: ${round = i}`);
                 console.log(result);
                 console.log(`Player: ${playerScore} / Computer: ${computerScore}`)
+                let para = document.createElement('p')
+                rightContainer.appendChild(para)
+                para.textContent = result
+                let roundScore = document.createElement('p')
+                rightContainer.appendChild(roundScore)
+                roundScore.textContent = `Player: ${playerScore} / Computer: ${computerScore}`
             }
         } else {
             console.warn("Something is fucked up")
