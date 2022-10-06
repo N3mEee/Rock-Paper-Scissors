@@ -1,9 +1,12 @@
 //DOM
 const gameTitle = document.querySelector('h1')
 const rightContainer = document.querySelector('.rightContainer')
-
+const container = document.querySelector('.container')
 gameTitle.textContent = "Play: Rock, Paper, Scissors"
 
+let containerPara = document.createElement('p')
+containerPara.innerHTML = "Run game(); in console to start a new game"
+container.appendChild(containerPara)
 //GAME
 const items = ["Rock", "Paper", "Scissors"];
 let computerChoice;
