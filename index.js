@@ -1,12 +1,6 @@
 //DOM
-const gameTitle = document.querySelector('h1')
 const rightContainer = document.querySelector('.rightContainer')
-const container = document.querySelector('.container')
-gameTitle.textContent = "Play: Rock, Paper, Scissors"
 
-let containerPara = document.createElement('p')
-containerPara.innerHTML = "Run game(); in console to start a new game"
-container.appendChild(containerPara)
 //GAME
 const items = ["Rock", "Paper", "Scissors"];
 let computerChoice;
@@ -19,13 +13,11 @@ let computerScore = 0;
 let getComputerChoice = () => {
     let randomPick = Math.floor(Math.random() * 3);
     computerChoice = items[randomPick];
-    // console.info(`Computer: ${computerChoice}`)
     return computerChoice;
 }
 
 let getPlayerChoice = () => {
     playerChoice = prompt("Pick an item:", "Rock, Paper, Scissors");
-    // console.info(`Player: ${playerChoice}`)
     return playerChoice;
 }
 
