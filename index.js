@@ -1,155 +1,140 @@
 //DOM
-const rightContainer = document.querySelector('.rightContainer')
+const gameHistory = document.querySelector('.gameHistory');
+const scorePlayer = document.querySelector('.scorePlayer');
+const scoreComputer = document.querySelector('.scoreComputer');
+const historySubTitle = document.querySelector('.historySubTitle');
+const gameImages = document.querySelector('.gameImages');
 
-//GAME
-const items = ["Rock", "Paper", "Scissors"];
-let computerChoice;
-let playerChoice;
-let result;
-let round = 0;
+const rockImage = document.querySelector('.rock');
+const paperImage = document.querySelector('.paper');
+const scissorsImage = document.querySelector('.scissors');
+const btn = document.querySelector('.btn');
+const btnR = document.querySelector('.btnR');
+const newGameBtn = document.querySelector('.newGameBtn')
+//EVENTS
+let rockPick = rockImage.addEventListener('click', (e) => {
+    playOneGame(items[0]);
+})
+let paperPick = paperImage.addEventListener('click', (e) => {
+    playOneGame(items[1]);
+})
+let scissorsPick = scissorsImage.addEventListener('click', (e) => {
+    playOneGame(items[2]);
+})
+let btnclick = btn.addEventListener('click', () => {
+    restartGame();
+})
+let btnRclick = btnR.addEventListener('click', () => {
+    restartGame();
+})
+
+
+
+//game logic
+const items = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
-
+let result;
 let getComputerChoice = () => {
     let randomPick = Math.floor(Math.random() * 3);
-    computerChoice = items[randomPick];
+    let computerChoice = items[randomPick];
     return computerChoice;
 }
 
-let getPlayerChoice = () => {
-    playerChoice = prompt("Pick an item:", "Rock, Paper, Scissors");
-    return playerChoice;
+let playOneRound = (playerChoice, computerChoice) => {
+    if (playerChoice === null || playerChoice === undefined) return "ERROR";
+    if (playerChoice === items[0]) {
+        switch (computerChoice) {
+            case items[0]:
+                result = "It's a draw! ROCK = ROCK";
+                break;
+            case items[1]:
+                computerScore += 1;
+                result = "YOU LOST! ROCK < PAPER";
+                break;
+            case items[2]:
+                playerScore += 1;
+                result = "YOU WON! ROCK > SCISSORS";
+                break;
+            default:
+                result = "ERROR";
+                break;
+        }
+    }
+    if (playerChoice === items[1]) {
+        switch (computerChoice) {
+            case items[0]:
+                playerScore += 1;
+                result = "YOU WON! PAPER > ROCK";
+                break;
+            case items[1]:
+                result = "It's a draw! PAPER = PAPER";
+                break;
+            case items[2]:
+                computerScore += 1;
+                result = "YOU LOST! PAPER < SCISSORS";
+                break;
+            default:
+                result = "ERROR";
+                break;
+        }
+    }
+    if (playerChoice === items[2]) {
+        switch (computerChoice) {
+            case items[0]:
+                computerScore += 1;
+                result = "YOU LOST! SCISSORS < ROCK";
+                break;
+            case items[1]:
+                playerScore += 1;
+                result = "YOU WON! SCISSORS > PAPER";
+                break;
+            case items[2]:
+                result = "It's a draw! SCISSORS = SCISSORS";
+                break;
+            default:
+                result = "ERROR";
+                break;
+        }
+    }
+    return result;
 }
 
 let restartGame = () => {
-    console.warn(`Restart The game`);
-    playerScore = 0;
-    computerScore = 0;
-}
-
-let endGame = () => {
-    console.warn('Run game(); in console to start a new game')
-    playerScore = 0;
-    computerScore = 0;
-}
-
-
-let playOneRound = (playerchoice, computerchoice) => {
-    if (playerchoice === null || playerchoice === undefined) {
-        result = "Player input was fucking wrong or something else happend!"
-        return result;
-    } else if (playerchoice.localeCompare(items[0], 'en', { sensitivity: 'base' }) === 0) {
-        switch (computerchoice) {
-            case items[0]:
-                result = "Draw! Rock = Rock"
-                break;
-            case items[1]:
-                result = "Computer Wins! Rock < Paper"
-                computerScore += 1;
-                break
-            case items[2]:
-                result = "Player Wins! Rock > Scissors"
-                playerScore += 1
-                break
-            default:
-                result = "Something went wrong!"
-                break;
-        }
-        return result;
-    } else if (playerchoice.localeCompare(items[1], 'en', { sensitivity: 'base' }) === 0) {
-        switch (computerchoice) {
-            case items[0]:
-                result = "Player Wins! Paper > Rock"
-                playerScore += 1
-                break;
-            case items[1]:
-                result = "Draw! Paper = Paper"
-                break
-            case items[2]:
-                result = "Computer Wins! Paper < Scissors"
-                computerScore += 1;
-                break
-            default:
-                result = "Something went wrong!"
-                break;
-        }
-        return result;
-    } else if (playerchoice.localeCompare(items[2], 'en', { sensitivity: 'base' }) === 0) {
-        switch (computerchoice) {
-            case items[0]:
-                result = "Computer Wins! Scissors < Rock"
-                computerScore += 1;
-                break;
-            case items[1]:
-                result = "Player Wins! Scissors > Paper"
-                playerScore += 1
-                break
-            case items[2]:
-                result = "Draw! Scissors = Scissors"
-                break
-            default:
-                result = "Something went wrong!"
-                break;
-        }
-        return result;
-    } else {
-        result = "Player input was fucking wrong or something else happend!"
+    let history = document.querySelectorAll('p');
+    for (let i = 0; i < history.length; i++) {
+        gameHistory.removeChild(history[i])
     }
+    historySubTitle.textContent = 'START A NEW GAME BY SELECTIONG ROCK, PAPER OR SCISSORS'
+    playerScore = 0;
+    computerScore = 0;
+    scoreComputer.textContent = `${computerScore} BATMAN`;
+    scorePlayer.textContent = `PLAYER ${playerScore}`;
+    gameImages.style.cssText = "display: block;"
+    newGameBtn.style.cssText = "display: none;"
 }
 
-let game = () => {
-    for (let i = 1; i <= 5; i++) {
-        playOneRound(getPlayerChoice(), getComputerChoice());
+let endGame = (winner) => {
+    historySubTitle.textContent = `${winner} SCORE: ${playerScore} - ${computerScore}`;
+    newgame = true;
+    gameImages.style.cssText = "display: none;"
+    newGameBtn.style.cssText = "display: block;"
+}
 
-        if (playerScore > computerScore && i >= 5) {
-            console.log(`Round: ${round = i}`);
-            console.log(result);
-            console.warn(`Player wins the game with: ${playerScore} : ${computerScore}`)
-            let h2 = document.createElement('h2');
-            rightContainer.appendChild(h2)
-            h2.textContent = `Player wins the game with: ${playerScore} : ${computerScore}`
-            endGame();
-            i = 5;
-        } else if (playerScore < computerScore && i >= 5) {
-            console.log(`Round: ${round = i}`);
-            console.log(result);
-            console.warn(`Computer wins the game with: ${computerScore} : ${playerScore}`)
-            let h2 = document.createElement('h2');
-            rightContainer.appendChild(h2)
-            h2.textContent = `Computer wins the game with: ${computerScore} : ${playerScore}`
-            endGame();
-            i = 5;
-        } else if (playerScore === computerScore && i >= 5) {
-            console.log(`Round: ${round = i}`);
-            console.log(result);
-            console.warn(`It's a draw, final score: ${computerScore} : ${playerScore}`)
-            let h2 = document.createElement('h2');
-            rightContainer.appendChild(h2)
-            h2.textContent = `It's a draw, final score: ${computerScore} : ${playerScore}`
-            endGame();
-            i = 5;
-        } else if (playerScore < 5 && computerScore < 5 && i < 5) {
-            if (result === "Player input was fucking wrong or something else happend!" || result === "Something went wrong!") {
-                console.log(`Round: ${round = i}`);
-                console.warn(result);
-                let para = document.createElement('p')
-                rightContainer.appendChild(para)
-                para.textContent = result
-                restartGame();
-                i = 0;
-            } else {
-                console.log(`Round: ${round = i}`);
-                console.log(result);
-                console.log(`Player: ${playerScore} / Computer: ${computerScore}`)
-                let para = document.createElement('p')
-                rightContainer.appendChild(para)
-                para.textContent = result
-                let roundScore = document.createElement('p')
-                rightContainer.appendChild(roundScore)
-                roundScore.textContent = `Player: ${playerScore} / Computer: ${computerScore}`
-            }
-        } else {
-            console.warn("Something is fucked up")
-        }
+
+let playOneGame = (playerChoice) => {
+    let currentTime = new Date();
+    playOneRound(playerChoice, getComputerChoice())
+    historySubTitle.textContent = 'NEW GAME'
+    let history = document.createElement('p')
+    history.textContent = `${currentTime.getHours()}:${currentTime.getMinutes()} - ${result}`;
+    gameHistory.appendChild(history)
+    scoreComputer.textContent = `${computerScore} BATMAN`;
+    scorePlayer.textContent = `PLAYER ${playerScore}`;
+
+    if (playerScore < 5 && computerScore === 5) {
+        endGame('You LOST!', playerScore, computerScore)
+    } else if (playerScore === 5 && computerScore < 5) {
+        endGame('You WON!', playerScore, computerScore)
     }
 }
