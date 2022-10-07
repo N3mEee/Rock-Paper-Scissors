@@ -1,6 +1,4 @@
 # Rock-Paper-Scissors
 Project: Rock Paper Scissors using JS
 
-ToDo:
--check to-do.jpg
--
+Live Preview: https://n3meee.github.io/Rock-Paper-Scissors/
