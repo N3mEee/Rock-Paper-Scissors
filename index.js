@@ -45,7 +45,7 @@ let playOneRound = (playerChoice, computerChoice) => {
     if (playerChoice === items[0]) {
         switch (computerChoice) {
             case items[0]:
-                result = "It's a draw! ROCK = ROCK";
+                result = "DRAW! ROCK = ROCK";
                 break;
             case items[1]:
                 computerScore += 1;
@@ -67,7 +67,7 @@ let playOneRound = (playerChoice, computerChoice) => {
                 result = "YOU WON! PAPER > ROCK";
                 break;
             case items[1]:
-                result = "It's a draw! PAPER = PAPER";
+                result = "DRAW! PAPER = PAPER";
                 break;
             case items[2]:
                 computerScore += 1;
@@ -89,7 +89,7 @@ let playOneRound = (playerChoice, computerChoice) => {
                 result = "YOU WON! SCISSORS > PAPER";
                 break;
             case items[2]:
-                result = "It's a draw! SCISSORS = SCISSORS";
+                result = "DRAW! SCISSORS = SCISSORS";
                 break;
             default:
                 result = "ERROR";
