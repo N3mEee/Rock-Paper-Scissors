@@ -3,18 +3,19 @@ body {
     padding: 0px;
     min-height: 100vh;
     display: flex;
-    font-family: 'Alkalami', serif;}
+    font-family: 'Alkalami', serif;
+}
 
 /* LEFT */
 .leftContainer {
     flex-direction: column;
-    background-color: #1d3557;
+    background-color: #B1B2FF;
     width: 70%;
 }
 
 .gameTitle {
     height: 10%;
-    background-color: #ffff;
+    background-color: #EEF1FF;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -22,44 +23,69 @@ body {
 }
 
 .gameContent {
+    color: #EEF1FF;
     height: 86%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-}
-
-.copyright {
-    color: white;
-    margin: 0;
-    padding: 0;
 }
 
 .score {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
 }
 
-.images {
+.statusGame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.endGame {
+    display: none;
+}
+
+.newGameBtn {
+    background-color: #AAC4FF;
+    font-family: 'Alkalami', serif;
+    font-size: 30px;
+    padding-top: 15px;
+    border-radius: 10px;
+}
+
+.rock,
+.paper,
+.scissors {
     width: 150px;
     height: 150px;
-    /* border-radius: px; */
 }
 
+.btnR {
+    background-color: #AAC4FF;
+    font-family: 'Alkalami', serif;
+    padding-top: 6px;
+    border-radius: 10px;
+    display: none;
+}
+
+.copyright {
+    margin: 0;
+    padding: 0;
+}
 
 /* RIGHT */
 .rightContainer {
-    background-color: white;
+    background-color: #EEF1FF;
     width: 30%;
     display: flex;
     flex-direction: column;
 }
 
-.gameNumber {
-    background-color: #e63946;
-    color: white;
+.rightTitle {
+    background-color: #B1B2FF;
+    color: #EEF1FF;
     text-align: center;
     height: 10%;
 }
@@ -69,21 +95,4 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-
-.btnR {
-    font-family: 'Alkalami', serif;
-    padding-top: 6px;
-    border-radius: 10px;
-}
-
-.newGameBtn {
-    background-color: #e63946;
-    color: white;
-    font-family: 'Alkalami', serif;
-    font-size: 30px;
-    padding-top: 15px;
-    border-radius: 10px;
-    display: none;
 }

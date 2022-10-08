@@ -3,14 +3,14 @@ const gameHistory = document.querySelector('.gameHistory');
 const scorePlayer = document.querySelector('.scorePlayer');
 const scoreComputer = document.querySelector('.scoreComputer');
 const historySubTitle = document.querySelector('.historySubTitle');
-const gameImages = document.querySelector('.gameImages');
-
+const endGameDiv = document.querySelector('.endGame');
+const gameImages = document.querySelector('.gameMenu');
 const rockImage = document.querySelector('.rock');
 const paperImage = document.querySelector('.paper');
 const scissorsImage = document.querySelector('.scissors');
-const btn = document.querySelector('.btn');
 const btnR = document.querySelector('.btnR');
 const newGameBtn = document.querySelector('.newGameBtn')
+
 //EVENTS
 let rockPick = rockImage.addEventListener('click', (e) => {
     playOneGame(items[0]);
@@ -21,20 +21,19 @@ let paperPick = paperImage.addEventListener('click', (e) => {
 let scissorsPick = scissorsImage.addEventListener('click', (e) => {
     playOneGame(items[2]);
 })
-let btnclick = btn.addEventListener('click', () => {
+let newGameBtnclick = newGameBtn.addEventListener('click', () => {
     restartGame();
 })
 let btnRclick = btnR.addEventListener('click', () => {
     restartGame();
 })
 
-
-
 //game logic
 const items = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 let result;
+
 let getComputerChoice = () => {
     let randomPick = Math.floor(Math.random() * 3);
     let computerChoice = items[randomPick];
@@ -111,16 +110,18 @@ let restartGame = () => {
     scoreComputer.textContent = `${computerScore} BATMAN`;
     scorePlayer.textContent = `PLAYER ${playerScore}`;
     gameImages.style.cssText = "display: block;"
-    newGameBtn.style.cssText = "display: none;"
+    endGameDiv.style.cssText = "display: none;"
+    btnR.style.cssText = "display: none;"
 }
 
 let endGame = (winner) => {
     historySubTitle.textContent = `${winner} SCORE: ${playerScore} - ${computerScore}`;
     newgame = true;
+    endGameDiv.firstChild.nextSibling.textContent = `${winner} SCORE: ${playerScore} - ${computerScore}`;
     gameImages.style.cssText = "display: none;"
-    newGameBtn.style.cssText = "display: block;"
+    endGameDiv.style.cssText = "display: block;"
+    btnR.style.cssText = "display: none;"
 }
-
 
 let playOneGame = (playerChoice) => {
     let currentTime = new Date();
@@ -131,6 +132,7 @@ let playOneGame = (playerChoice) => {
     gameHistory.appendChild(history)
     scoreComputer.textContent = `${computerScore} BATMAN`;
     scorePlayer.textContent = `PLAYER ${playerScore}`;
+    btnR.style.cssText = "display: block;"
 
     if (playerScore < 5 && computerScore === 5) {
         endGame('You LOST!', playerScore, computerScore)
