@@ -1,53 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alkalami&display=swap"
+            rel="stylesheet"
+        />
+        <title>Rock-Paper-Scissors</title>
+        <script src="index.js" defer></script>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alkalami&display=swap" rel="stylesheet">
-    <title>Rock-Paper-Scissors</title>
-    <script src="index.js" defer></script>
-</head>
-
-<body>
-    <div class="leftContainer">
-        <div class="gameTitle">
-            <h1>ROCK / PAPER / SCISSORS</h1>
-        </div>
-        <div class="gameContent">
-            <div class="statusGame">
-                <div class="score">
-                    <h1 class="scorePlayer">PLAYER 0</h1>
-                    <h1>-</h1>
-                    <h1 class="scoreComputer">0 BATMAN</h1>
-                </div>
-                <div class="endGame">
-                    <div class="winner"></div>
-                    <button class="newGameBtn">NEW GAME</button>
-                </div>
+    <body>
+        <div class="left-container">
+            
+            <div class="rightTitle">
+                <h1>CURRENT ROUND</h1>
             </div>
-            <div class="gameMenu">
-                <img class="rock" src="./Images/rock.png" alt="gameRockImage">
-                <img class="paper" src="./Images/paper.png" alt="gamePaperImage">
-                <img class="scissors" src="./Images/scissors.png" alt="gameScissorsImage">
+            <div class="current-round">
+                <h4 class="historySubTitle">
+                    START A NEW GAME BY SELECTIONG ROCK, PAPER OR SCISSORS
+                </h4>
+                <p class="current-round-winner"></p>
             </div>
-            <button class="btnR">RESTART GAME</button>
+            <div class="rightTitle">
+                <h1>GAME HISTORY</h1>
+            </div>
+            <div class="gameHistory">
+            </div>
+            <div class="copyright">© 2022 N3mEee</div>
         </div>
-        <div class="copyright">© 2022 N3mEee.</div>
-    </div>
-
-    <div class="rightContainer">
-        <div class="rightTitle">
-            <h1>GAME HISTORY</h1>
+        <div class="right-container">
+            <div class="gameTitle">
+                <h1>ROCK / PAPER / SCISSORS</h1>
+            </div>
+            <div class="gameContent">
+                <div class="statusGame">
+                    <div class="score">
+                        <h1 class="scorePlayer">PLAYER 0</h1>
+                        <h1>-</h1>
+                        <h1 class="scoreComputer">0 BATMAN</h1>
+                    </div>
+                    <div class="endGame">
+                        <div class="winner"></div>
+                        <button class="newGameBtn">NEW GAME</button>
+                    </div>
+                </div>
+                <div class="gameMenu">
+                    <img
+                        class="rock"
+                        src="./Images/rock.png"
+                        alt="gameRockImage"
+                    />
+                    <img
+                        class="paper"
+                        src="./Images/paper.png"
+                        alt="gamePaperImage"
+                    />
+                    <img
+                        class="scissors"
+                        src="./Images/scissors.png"
+                        alt="gameScissorsImage"
+                    />
+                </div>
+                <button class="btnR">RESTART GAME</button>
+            </div>
         </div>
-        <div class="gameHistory">
-            <h4 class="historySubTitle">START A NEW GAME BY SELECTIONG ROCK, PAPER OR SCISSORS</h4>
-        </div>
-    </div>
-</body>
-
+    </body>
 </html>

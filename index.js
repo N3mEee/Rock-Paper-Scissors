@@ -1,5 +1,6 @@
 //DOM
 const gameHistory = document.querySelector('.gameHistory');
+const currentRoundWinner = document.querySelector('.current-round-winner');
 const scorePlayer = document.querySelector('.scorePlayer');
 const scoreComputer = document.querySelector('.scoreComputer');
 const historySubTitle = document.querySelector('.historySubTitle');
@@ -33,6 +34,7 @@ const items = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 let result;
+let round = 0;
 
 let getComputerChoice = () => {
     let randomPick = Math.floor(Math.random() * 3);
@@ -100,7 +102,9 @@ let playOneRound = (playerChoice, computerChoice) => {
 }
 
 let restartGame = () => {
-    let history = document.querySelectorAll('p');
+    let history = gameHistory.querySelectorAll('p');
+    currentRoundWinner.textContent = "";
+    round = 0;
     for (let i = 0; i < history.length; i++) {
         gameHistory.removeChild(history[i])
     }
@@ -124,12 +128,14 @@ let endGame = (winner) => {
 }
 
 let playOneGame = (playerChoice) => {
-    let currentTime = new Date();
     playOneRound(playerChoice, getComputerChoice())
+    round += 1;
     historySubTitle.textContent = 'NEW GAME'
     let history = document.createElement('p')
-    history.textContent = `${currentTime.getHours()}:${currentTime.getMinutes()} - ${result}`;
+    history.textContent = `#${round} : ${result}`;
+    currentRoundWinner.textContent = history.textContent;
     gameHistory.appendChild(history)
+    gameHistory.insertBefore(history, gameHistory.children[0])
     scoreComputer.textContent = `${computerScore} BATMAN`;
     scorePlayer.textContent = `PLAYER ${playerScore}`;
     btnR.style.cssText = "display: block;"
